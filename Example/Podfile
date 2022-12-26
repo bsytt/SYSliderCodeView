@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'SYSliderCodeView_Example' do
+  pod 'SYSliderCodeView', :path => '../'
+
+  target 'SYSliderCodeView_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+  end
+end
