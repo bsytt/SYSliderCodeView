@@ -1,0 +1,6 @@
+framework module SYSliderCodeView {
+  umbrella header "SYSliderCodeView-umbrella.h"
+
+  export *
+  module * { export * }
+}

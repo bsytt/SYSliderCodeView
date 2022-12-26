@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SYSliderCodeView'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of SYSliderCodeView.'
+  s.version          = '0.0.1'
+  s.summary          = '滑块验证'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
