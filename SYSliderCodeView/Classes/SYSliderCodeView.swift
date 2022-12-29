@@ -39,44 +39,33 @@ open class SYSliderCodeView: UIView {
         }
     }
     
-    //控件是否有圆角（默认有）
-    public var isCornerRadius : Bool = false
+    //控件圆角
     public var cornerRadius : CGFloat = 6 {
         didSet {
-            if isCornerRadius {
-                slider.layer.masksToBounds = true
-                slider.layer.cornerRadius = cornerRadius
-                label.layer.masksToBounds = true
-                label.layer.cornerRadius = cornerRadius
-            }
+            slider.layer.masksToBounds = true
+            slider.layer.cornerRadius = cornerRadius
+            label.layer.masksToBounds = true
+            label.layer.cornerRadius = cornerRadius
         }
     }
     
-    //控件是否有边框
-    public var isBorder : Bool = false
+    //控件边框
     public var borderWidth : CGFloat = 1 {
         didSet {
-            if isBorder {
-                label.layer.borderWidth = borderWidth
-            }
+            label.layer.borderWidth = borderWidth
         }
     }
     public var borderColor : UIColor = UIColor.grayCColor {
         didSet {
-            if isBorder {
-                label.layer.borderColor = borderColor.cgColor
-            }
+            label.layer.borderColor = borderColor.cgColor
         }
     }
     
     var sliderWH : CGFloat = 44
-    //滑块是否有圆角
-    public var isSliderCornerRadius : Bool = true
+    //滑块圆角
     public var sliderCornerRadius : CGFloat = 8 {
         didSet {
-            if isSliderCornerRadius {
-                imageView.layer.cornerRadius = sliderCornerRadius
-            }
+            imageView.layer.cornerRadius = sliderCornerRadius
         }
     }
     

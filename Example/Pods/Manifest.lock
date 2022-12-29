@@ -4,7 +4,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - SYSliderCodeView (0.1.0)
+  - SYSliderCodeView (0.0.1)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.4)
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  SYSliderCodeView: 5d4824dd452e1bf247080318d3459f1f8c45175c
+  SYSliderCodeView: 82a432300f06c8eb79acc18085a1f3990075edbd
 
 PODFILE CHECKSUM: 27fd4426d80a0087d6fd5718788b6e7e701c378f
 

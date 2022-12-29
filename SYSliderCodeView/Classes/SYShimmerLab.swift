@@ -128,7 +128,7 @@ open class SYShimmerLab: UIView {
         self.addSubview(maskLabel)
         self.layer.masksToBounds = true
         self.charSize = CGSize(width: self.frame.width, height: self.frame.height)
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     open override func layoutSubviews() {

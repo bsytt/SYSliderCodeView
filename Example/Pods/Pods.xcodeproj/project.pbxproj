@@ -493,8 +493,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -617,6 +617,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		015EB8D058FCFE3CEFF9A6CC713E58BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6027B33F7D98535DAACE6561530ECF10 /* SYSliderCodeView.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SYSliderCodeView/SYSliderCodeView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView.modulemap";
+				PRODUCT_MODULE_NAME = SYSliderCodeView;
+				PRODUCT_NAME = SYSliderCodeView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		0CF977E736A9F0297ED689DCD07C3E1C /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C6513B09838318BD763CFD5390D1DE0 /* FBSnapshotTestCase.release.xcconfig */;
@@ -807,38 +839,6 @@
 			};
 			name = Debug;
 		};
-		984A890B3B661B9A6748FA1DAAFFC561 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6027B33F7D98535DAACE6561530ECF10 /* SYSliderCodeView.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SYSliderCodeView/SYSliderCodeView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView.modulemap";
-				PRODUCT_MODULE_NAME = SYSliderCodeView;
-				PRODUCT_NAME = SYSliderCodeView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		A4427304C9060903B8AED006BDB49374 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EFEE4DDBD01D8F13DE6C90507C41488 /* Pods-SYSliderCodeView_Example.debug.xcconfig */;
@@ -872,7 +872,7 @@
 			};
 			name = Debug;
 		};
-		CAF9F4AEA171F0D2D52E9A3AAE38B0F1 /* Debug */ = {
+		C9E43EED3732CB35E6829B6CEBF2F011 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E4857D902F9ADD39EA4D0D496E55128 /* SYSliderCodeView.debug.xcconfig */;
 			buildSettings = {
@@ -896,7 +896,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1045,8 +1045,8 @@
 		B931C547F616DE1D33EA360B6B421DE7 /* Build configuration list for PBXNativeTarget "SYSliderCodeView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CAF9F4AEA171F0D2D52E9A3AAE38B0F1 /* Debug */,
-				984A890B3B661B9A6748FA1DAAFFC561 /* Release */,
+				C9E43EED3732CB35E6829B6CEBF2F011 /* Debug */,
+				015EB8D058FCFE3CEFF9A6CC713E58BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

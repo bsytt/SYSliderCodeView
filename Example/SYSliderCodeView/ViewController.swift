@@ -52,9 +52,7 @@ class ViewController: UIViewController {
         slider.minimumTrackImage = minimumTrackImage
         slider.maximumTrackImage = maximumTrackImage
         slider.thumbImage = UIImage(named: "darrow")
-        slider.isCornerRadius = true
         slider.cornerRadius = 8
-        slider.isSliderCornerRadius = true
         slider.sliderCornerRadius = 8
         slider.text = "请按住滑块，拖动到最右边"
         return slider
