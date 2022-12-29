@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     let minimumTrackImage = UIImage.createImage(imgColor: UIColor.themeColor, size: CGSize(width: kScreenWidth-30, height:40))
     let maximumTrackImage = UIImage.createImage(imgColor: UIColor(red:0.94, green:0.93, blue:0.94, alpha:1.00), size: CGSize(width: kScreenWidth-30, height: 40))
     lazy var sliderView: SYSliderCodeView = {
-        let slider = SYSliderCodeView(frame: CGRect(x: 15, y: 30, width: kScreenWidth-30, height: 40),sliderWH: 40)
+        let slider = SYSliderCodeView(frame: CGRect(x: 15, y: 100, width: kScreenWidth-30, height: 40),sliderWH: 40)
         slider.minimumTrackImage = minimumTrackImage
         slider.maximumTrackImage = maximumTrackImage
         slider.thumbImage = UIImage(named: "darrow")
