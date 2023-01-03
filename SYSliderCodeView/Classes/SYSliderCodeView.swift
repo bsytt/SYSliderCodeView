@@ -1,8 +1,8 @@
 //
-//  SliderCodeView.swift
-//  SYRadarView
+//  SYSliderImageCodeView.swift
+//  SYSliderCodeView
 //
-//  Created by baoshy on 2022/12/22.
+//  Created by baoshy on 2022/12/30.
 //
 
 import UIKit
@@ -68,10 +68,12 @@ open class SYSliderCodeView: UIView {
             imageView.layer.cornerRadius = sliderCornerRadius
         }
     }
+    var type : SliderCodeType = .slider
     
-    public init(frame: CGRect,sliderWH:CGFloat = 44) {
+    public init(frame: CGRect,sliderWH:CGFloat = 44,type:SliderCodeType) {
         super.init(frame: frame)
         self.sliderWH = sliderWH
+        self.type = type
         initSubViews()
     }
     
@@ -80,11 +82,20 @@ open class SYSliderCodeView: UIView {
     }
     
     func initSubViews() {
+        createCodeTypeSlider()
+    }
+    
+    //创建滑块验证
+    func createCodeTypeSlider() {
         self.addSubview(slider)
         self.addSubview(label)
         self.addSubview(imageView)
         startShimmer()
+        if type == .slider {
+            slider.addTarget(self, action: #selector(valueChange(slider:)), for: .valueChanged)
+        }
     }
+    
     
     //文字开始动画
     public func startShimmer() {
@@ -95,7 +106,7 @@ open class SYSliderCodeView: UIView {
     public func didCancel() {
         self.changeBlock?(false)
         self.slider.setValue(0, animated: true)
-        self.imageView.frame = CGRect(x: self.slider.frame.origin.x, y: self.slider.frame.origin.y-(sliderWH-self.frame.height)/2, width: sliderWH, height: sliderWH)
+        imageView.frame = CGRect(x: self.slider.frame.origin.x, y: self.slider.frame.origin.y-(sliderWH-self.frame.height)/2, width: sliderWH, height: sliderWH)
     }
     
     @objc func valueChange(slider:UISlider) {
@@ -128,13 +139,13 @@ open class SYSliderCodeView: UIView {
                 self.changeBlock?(false)
             }
         }
+        
     }
     
     lazy var slider: SYCheckSlider = {
         let slider = SYCheckSlider(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         slider.minimumTrackTintColor = .clear
         slider.maximumTrackTintColor = .clear
-        slider.addTarget(self, action: #selector(valueChange(slider:)), for: .valueChanged)
         return slider
     }()
     lazy var imageView: UIImageView = {
@@ -148,5 +159,6 @@ open class SYSliderCodeView: UIView {
 //        label.shimmerType = .auto
         return label
     }()
+
     
 }

@@ -1,9 +1,8 @@
 //
-//  UIColor+valueRGB.swift
-//  Nongjibang
+//  SYSliderImageCodeView.swift
+//  SYSliderCodeView
 //
-//  Created by xiyang on 2017/7/26.
-//  Copyright © 2017年 xiyang. All rights reserved.
+//  Created by baoshy on 2022/12/30.
 //
 
 import UIKit
@@ -117,4 +116,81 @@ extension UIColor{
     
    
   
+}
+
+extension UIImage {
+    ///截取当前image对象rect区域内的图像
+    func sy_subImageWithRect(rect:CGRect) -> UIImage? {
+        let scale = self.scale
+        let scaleRect = CGRect(x: rect.origin.x*scale, y: rect.origin.y*scale, width: rect.width*scale, height: rect.height*scale)
+        let newImageRef = self.cgImage?.cropping(to: scaleRect)
+        if let newImageRef = newImageRef {
+            let newImage = UIImage(cgImage: newImageRef).sy_RescaleImage(to: rect.size)
+            return newImage
+        }
+        return nil
+    }
+    ///按给定path剪裁图片
+    /**
+     path:路径，剪裁区域。
+     mode:填充模式
+     */
+    func sy_ClipImageWithPath(path:UIBezierPath,mode:SliderCodeContentMode) -> UIImage? {
+        let originScale: CGFloat = size.width * 1.0 / size.height
+        let boxBounds = path.bounds
+        var width = boxBounds.size.width
+        var height = width / originScale
+        switch mode {
+        case .scaleAspectFit:
+            if height > boxBounds.height {
+                height = boxBounds.height
+                width = height * originScale
+            }
+            break
+        case .scaleAspectFill:
+            if height < boxBounds.height {
+                height = boxBounds.height
+                width = height * originScale
+            }
+            break
+        case .scaleToFill:
+            if height != boxBounds.height {
+                height = boxBounds.height
+            }
+            break
+        default:
+            break
+        }
+        UIGraphicsBeginImageContextWithOptions(boxBounds.size, false, UIScreen.main.scale)
+        let bitmap = UIGraphicsGetCurrentContext()
+        
+        let newPath : UIBezierPath = path.copy() as! UIBezierPath
+        newPath.apply(CGAffineTransformMakeTranslation(-path.bounds.origin.x, -path.bounds.origin.y))
+        newPath.addClip()
+        //移动原点至图片中心
+        bitmap?.translateBy(x: boxBounds.size.width / 2.0, y: boxBounds.size.height / 2.0)
+        bitmap?.scaleBy(x: 1.0, y: -1.0)
+        bitmap?.draw(cgImage!, in: CGRect(x: -width / 2, y: -height / 2, width: width, height: height))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        if let newImage = newImage {
+            return newImage
+        }
+        return nil
+    }
+    ///压缩图片至指定尺寸
+    func sy_RescaleImage(to size: CGSize) -> UIImage? {
+        let rect = CGRect(origin: CGPoint.zero, size: size)
+
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+
+        draw(in: rect)
+
+        let resImage = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+
+        return resImage
+    }
 }

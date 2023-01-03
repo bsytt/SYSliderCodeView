@@ -1,11 +1,16 @@
 //
-//  CheckSlider.swift
-//  SYRadarView
+//  SYSliderImageCodeView.swift
+//  SYSliderCodeView
 //
-//  Created by baoshy on 2022/12/22.
+//  Created by baoshy on 2022/12/30.
 //
 
 import UIKit
+
+public enum SliderCodeType {
+    case slider
+    case image
+}
 
 class SYCheckSlider: UISlider {
     override init(frame: CGRect) {

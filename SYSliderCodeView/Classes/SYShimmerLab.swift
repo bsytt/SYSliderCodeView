@@ -1,8 +1,8 @@
 //
-//  SYShimmerLab.swift
-//  SYRadarView
+//  SYSliderImageCodeView.swift
+//  SYSliderCodeView
 //
-//  Created by baoshy on 2022/12/26.
+//  Created by baoshy on 2022/12/30.
 //
 
 import UIKit

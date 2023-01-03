@@ -1,6 +1,0 @@
-framework module Pods_SYSliderCodeView_Tests {
-  umbrella header "Pods-SYSliderCodeView_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
