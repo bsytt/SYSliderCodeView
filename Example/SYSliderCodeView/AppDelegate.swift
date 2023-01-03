@@ -1,11 +1,9 @@
 //
-//  AppDelegate.swift
+//  SYSliderImageCodeView.swift
 //  SYSliderCodeView
 //
-//  Created by bsytt on 12/26/2022.
-//  Copyright (c) 2022 bsytt. All rights reserved.
+//  Created by baoshy on 2022/12/30.
 //
-
 import UIKit
 
 @UIApplicationMain

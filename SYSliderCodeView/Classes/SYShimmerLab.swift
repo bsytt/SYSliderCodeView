@@ -13,7 +13,7 @@ enum SYShimmerType {
     case auto    //左右来回
     case all     //整体
 }
-open class SYShimmerLab: UIView {
+class SYShimmerLab: UIView {
 
     var text : String? {
         didSet {
@@ -180,8 +180,6 @@ open class SYShimmerLab: UIView {
     
     func startShimmer() {   //开始闪烁，闪烁期间更改上面属性立即生效
         DispatchQueue.main.async {
-            // 切换到主线程串行队列，下面代码打包成一个事件（原子操作），加到runloop，就不用担心 isPlaying 被多个线程同时修改
-            // dispatch_async() 不 strong 持有本 block，也不用担心循环引用
             if self.isPlaying { return}
             self.isPlaying = true
             self.copyLabel(dLabel: self.maskLabel)
@@ -219,8 +217,6 @@ open class SYShimmerLab: UIView {
                 self.maskLayer.removeAllAnimations()
                 self.maskLayer.add(self.alphaAni!, forKey: "start")
                 break;
-            default:
-                break
             }
         }
     }

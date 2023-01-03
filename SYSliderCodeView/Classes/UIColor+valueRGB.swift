@@ -8,11 +8,7 @@
 import UIKit
 
 extension UIColor{
-    
-    // 便利初始化方法
-    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1.0) {
-        self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)
-    }
+
     //用数值初始化颜色，便于生成设计图上标明的十六进制颜色
     public convenience init(hexString: String) {
         
@@ -47,19 +43,7 @@ extension UIColor{
             alpha: 1.0
         )
     }
-    public class func btnGreenColor()->UIColor{
-        return UIColor(hexString: "7fbe26")
-    }
-    
-    public class func globalGreenColor() -> UIColor {
-        return UIColor(r: 127, g: 190, b: 38)
-    }
-    
-    public static var bgColor: UIColor {
-        return UIColor(hexString: "#f5f8f9")
-    }
    
-    
     public static var gray2Color: UIColor {
         return UIColor(hexString: "222222")
     }
@@ -88,34 +72,10 @@ extension UIColor{
     public static var grayBColor: UIColor{
         return UIColor(hexString: "BBBBBB")
     }
-    public static var seperatorGrayColor: UIColor{
-        return UIColor(hexString: "e0e0e0")
-    }
-    
-    public static var buttonGray:UIColor{
-        return UIColor(hexString: "#D8D8D8")
-    }
-    public static var backGray:UIColor{
-        return UIColor(hexString: "#F3F3F3")
-    }
-    public static var lineColor:UIColor{
-        return UIColor(hexString: "#DCDCDC")
-    }
     //主题颜色
     public static var themeColor: UIColor{
         return UIColor(hexString: "#1582FA")
     }
-    //轨迹回放路径色
-    public static var deviceStartColor: UIColor {
-        return UIColor(hexString: "157CCF")
-    }
-    public static var deviceCloseColor: UIColor {
-        return UIColor(hexString: "f23712")
-    }
-
-    
-   
-  
 }
 
 extension UIImage {

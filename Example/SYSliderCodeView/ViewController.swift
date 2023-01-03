@@ -1,11 +1,9 @@
 //
-//  ViewController.swift
+//  SYSliderImageCodeView.swift
 //  SYSliderCodeView
 //
-//  Created by bsytt on 12/26/2022.
-//  Copyright (c) 2022 bsytt. All rights reserved.
+//  Created by baoshy on 2022/12/30.
 //
-
 import UIKit
 import SYSliderCodeView
 
@@ -16,16 +14,16 @@ let kScreenHeight = UIScreen.main.bounds.size.height
 
 class ViewController: UIViewController {
     let minimumTrackImage = UIImage.createImage(imgColor: UIColor.themeColor, size: CGSize(width: kScreenWidth-30, height:40))
+    
     let maximumTrackImage = UIImage.createImage(imgColor: UIColor(red:0.94, green:0.93, blue:0.94, alpha:1.00), size: CGSize(width: kScreenWidth-30, height: 40))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        createSlider()
         createImgSlider()
-//        createSlider()
     }
     func createSlider() {
-        let sliderView = SYSliderCodeView(frame: CGRect(x: 15, y: 200, width: kScreenWidth-30, height: 40), sliderWH: 40, type: .slider)
+        let sliderView = SYSliderCodeView(frame: CGRect(x: 15, y: 100, width: kScreenWidth-30, height: 40), sliderWH: 40)
         sliderView.minimumTrackImage = minimumTrackImage
         sliderView.maximumTrackImage = maximumTrackImage
         sliderView.thumbImage = UIImage(named: "darrow")

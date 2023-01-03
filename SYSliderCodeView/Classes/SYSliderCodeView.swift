@@ -9,8 +9,9 @@ import UIKit
 
 public typealias SliderCodeBlock = (Bool)->()
 open class SYSliderCodeView: UIView {
-    public var changeBlock : SliderCodeBlock?
     
+    public var changeBlock : SliderCodeBlock?
+    var sliderWH : CGFloat = 44
     public var minimumTrackImage : UIImage? {
         didSet {
             slider.setMinimumTrackImage(minimumTrackImage, for: .normal)
@@ -24,56 +25,46 @@ open class SYSliderCodeView: UIView {
     
     public var thumbImage: UIImage? {
         didSet {
-            slider.setThumbImage(thumbImage,for: .normal)
-            slider.setThumbImage(thumbImage,for: .highlighted)
-            imageView.image = thumbImage
+            slider.thumbImage = thumbImage
         }
     }
     
     //显示文字
     public var text : String? {
         didSet {
-            label.text = text
-            label.font = UIFont.systemFont(ofSize: 16)
-            label.textColor = .grayCColor
+            slider.text = text
         }
     }
     
     //控件圆角
     public var cornerRadius : CGFloat = 6 {
         didSet {
-            slider.layer.masksToBounds = true
-            slider.layer.cornerRadius = cornerRadius
-            label.layer.masksToBounds = true
-            label.layer.cornerRadius = cornerRadius
+            slider.cornerRadius = cornerRadius
         }
     }
     
     //控件边框
     public var borderWidth : CGFloat = 1 {
         didSet {
-            label.layer.borderWidth = borderWidth
+            slider.borderWidth = borderWidth
         }
     }
     public var borderColor : UIColor = UIColor.grayCColor {
         didSet {
-            label.layer.borderColor = borderColor.cgColor
+            slider.borderColor = borderColor
         }
     }
     
-    var sliderWH : CGFloat = 44
     //滑块圆角
     public var sliderCornerRadius : CGFloat = 8 {
         didSet {
-            imageView.layer.cornerRadius = sliderCornerRadius
+            slider.sliderCornerRadius = sliderCornerRadius
         }
     }
-    var type : SliderCodeType = .slider
     
-    public init(frame: CGRect,sliderWH:CGFloat = 44,type:SliderCodeType) {
+    public init(frame: CGRect,sliderWH:CGFloat = 44) {
         super.init(frame: frame)
         self.sliderWH = sliderWH
-        self.type = type
         initSubViews()
     }
     
@@ -88,25 +79,19 @@ open class SYSliderCodeView: UIView {
     //创建滑块验证
     func createCodeTypeSlider() {
         self.addSubview(slider)
-        self.addSubview(label)
-        self.addSubview(imageView)
         startShimmer()
-        if type == .slider {
-            slider.addTarget(self, action: #selector(valueChange(slider:)), for: .valueChanged)
-        }
     }
     
     
     //文字开始动画
     public func startShimmer() {
-        label.isPlaying = false
-        label.startShimmer()
+        slider.startShimmer()
     }
     
     public func didCancel() {
         self.changeBlock?(false)
         self.slider.setValue(0, animated: true)
-        imageView.frame = CGRect(x: self.slider.frame.origin.x, y: self.slider.frame.origin.y-(sliderWH-self.frame.height)/2, width: sliderWH, height: sliderWH)
+        self.slider.setImageViewFrame(frame: CGRect(x: self.slider.frame.origin.x, y: self.slider.frame.origin.y-(sliderWH-self.frame.height)/2, width: sliderWH, height: sliderWH))
     }
     
     @objc func valueChange(slider:UISlider) {
@@ -117,7 +102,7 @@ open class SYSliderCodeView: UIView {
             self.slider.setMinimumTrackImage(maximumTrackImage, for: .normal)
         }
 
-        imageView.center = CGPoint(x: self.slider.frame.origin.x+CGFloat(slider.value)*(self.slider.frame.width-40)+20, y: self.slider.center.y)
+        self.slider.setImageViewCenter(point: CGPoint(x: self.slider.frame.origin.x+CGFloat(slider.value)*(self.slider.frame.width-40)+20, y: self.slider.center.y))
 
         if (!slider.isTracking && slider.value != 1) {
             self.slider.setValue(0, animated: true)
@@ -126,7 +111,7 @@ open class SYSliderCodeView: UIView {
             }else {
                 self.slider.setMinimumTrackImage(maximumTrackImage, for: .normal)
             }
-            imageView.frame = CGRect(x: self.slider.frame.origin.x, y: self.slider.frame.origin.y-(sliderWH-self.frame.height)/2, width: sliderWH, height: sliderWH)
+            self.slider.setImageViewFrame(frame: CGRect(x: self.slider.frame.origin.x, y: self.slider.frame.origin.y-(sliderWH-self.frame.height)/2, width: sliderWH, height: sliderWH))
         }
         if (!slider.isTracking && slider.value == 1) {
             if slider.state.rawValue == 1 {
@@ -146,19 +131,7 @@ open class SYSliderCodeView: UIView {
         let slider = SYCheckSlider(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         slider.minimumTrackTintColor = .clear
         slider.maximumTrackTintColor = .clear
+        slider.addTarget(self, action: #selector(valueChange(slider:)), for: .valueChanged)
         return slider
     }()
-    lazy var imageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: slider.frame.origin.x, y: slider.frame.origin.y-(sliderWH-self.frame.height)/2, width: sliderWH, height: sliderWH))
-        imageView.backgroundColor = UIColor(red:0.38, green:0.65, blue:0.98, alpha:1.00)
-        imageView.contentMode = .center
-        return imageView
-    }()
-    lazy var label: SYShimmerLab = {
-        let label = SYShimmerLab(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height));
-//        label.shimmerType = .auto
-        return label
-    }()
-
-    
 }

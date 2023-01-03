@@ -13,6 +13,7 @@ let margin:CGFloat = 10
 let codeSize:CGFloat = 50
 //贝塞尔曲线偏移
 let offset:CGFloat = 9
+
 public enum SliderCodeContentMode {
     case scaleAspectFit
     case scaleAspectFill
@@ -24,70 +25,67 @@ public typealias SliderImgCodeBlock = (String)->()
 open class SYSliderImageCodeView: UIView {
 
     var randomPoint : CGPoint? // 随机位置
-    public var successBlock : SliderImgCodeBlock?
-    var sliderView : SYSliderCodeView!
+    var sliderView : SYCheckSlider!
     var seconds : CGFloat = 0
     var timer : DispatchSourceTimer?
+    var imageName : String?
+    var sliderWH : CGFloat = 44
+
+    //====================================
+    public var successBlock : SliderImgCodeBlock?
+
     public var minimumTrackImage : UIImage? {
         didSet {
-            sliderView.slider.setMinimumTrackImage(minimumTrackImage, for: .normal)
+            sliderView.setMinimumTrackImage(minimumTrackImage, for: .normal)
         }
     }
     public var maximumTrackImage : UIImage?{
         didSet {
-            sliderView.slider.setMaximumTrackImage(maximumTrackImage, for: .normal)
+            sliderView.setMaximumTrackImage(maximumTrackImage, for: .normal)
         }
     }
     
     public var thumbImage: UIImage? {
         didSet {
-            sliderView.slider.setThumbImage(thumbImage,for: .normal)
-            sliderView.slider.setThumbImage(thumbImage,for: .highlighted)
-            sliderView.imageView.image = thumbImage
+            sliderView.thumbImage = thumbImage
         }
     }
     
     //显示文字
     public var text : String? {
         didSet {
-            sliderView.label.text = text
-            sliderView.label.font = UIFont.systemFont(ofSize: 16)
-            sliderView.label.textColor = .grayCColor
+            sliderView.text = text
         }
     }
-    
+   
     //控件圆角
     public var cornerRadius : CGFloat = 6 {
         didSet {
-            sliderView.slider.layer.masksToBounds = true
-            sliderView.slider.layer.cornerRadius = cornerRadius
-            sliderView.label.layer.masksToBounds = true
-            sliderView.label.layer.cornerRadius = cornerRadius
+            sliderView.cornerRadius = cornerRadius
         }
     }
     
     //控件边框
     public var borderWidth : CGFloat = 1 {
         didSet {
-            sliderView.label.layer.borderWidth = borderWidth
+            sliderView.borderWidth = borderWidth
         }
     }
     public var borderColor : UIColor = UIColor.grayCColor {
         didSet {
-            sliderView.label.layer.borderColor = borderColor.cgColor
+            sliderView.borderColor = borderColor
         }
     }
     
-    var sliderWH : CGFloat = 44
     //滑块圆角
     public var sliderCornerRadius : CGFloat = 8 {
         didSet {
-            sliderView.imageView.layer.cornerRadius = sliderCornerRadius
+            self.sliderView.sliderCornerRadius = sliderCornerRadius
         }
     }
+    
+    //====================================
 
-    var type : SliderCodeType = .slider
-    var imageName : String?
     public init(frame: CGRect,imageName:String? = nil,sliderWH:CGFloat) {
         super.init(frame: frame)
         self.sliderWH = sliderWH
@@ -102,16 +100,20 @@ open class SYSliderImageCodeView: UIView {
     func createCodeTypeImage(imageName:String? = nil,sliderWH:CGFloat) {
         guard let imageName = imageName else { return}
         self.imageName = imageName
-        sliderView = SYSliderCodeView(frame: CGRect(x: 0, y: self.frame.height-sliderWH, width: self.frame.width, height: sliderWH),sliderWH: sliderWH, type: .image)
-        sliderView.slider.addTarget(self, action: #selector(buttonAction(slider:event:)), for: .allTouchEvents)
+        sliderView = SYCheckSlider(frame: CGRect(x: 0, y: self.frame.height-sliderWH, width: self.frame.width, height: sliderWH))
+        sliderView.addTarget(self, action: #selector(buttonAction(slider:event:)), for: .allTouchEvents)
 
         self.addSubview(mainImage)
         self.addSubview(sliderView)
-        
         mainImage.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height-sliderWH-8)
         mainImage.image = UIImage(named: imageName)
-        sliderView.startShimmer()
+        startShimmer()
         self.refreshAction()
+    }
+    
+    //文字开始动画
+    public func startShimmer() {
+        sliderView.startShimmer()
     }
     //获取随机位置
     func getRandomPoint() {
@@ -130,7 +132,8 @@ open class SYSliderImageCodeView: UIView {
         getRandomPoint()
         addMoveImage()
         defaultSlider()
-        self.sliderView.imageView.frame = CGRect(x: self.sliderView.slider.frame.origin.x, y: self.sliderView.slider.frame.origin.y, width: sliderWH, height: sliderWH)
+        
+        self.sliderView.setImageViewFrame(frame: CGRect(x: self.sliderView.frame.origin.x, y: (sliderWH-self.sliderView.frame.height)/2, width: sliderWH, height: sliderWH))
     }
     
     //添加可移动的图片
@@ -159,8 +162,8 @@ open class SYSliderImageCodeView: UIView {
     
     }
     func defaultSlider() {
-        sliderView.slider.value = 0.05
-        changeSliderWithVlue(value: CGFloat(sliderView.slider.value))
+        sliderView.value = 0.05
+        changeSliderWithVlue(value: CGFloat(sliderView.value))
     }
     //图片位置随着Slider滑动改变frame
     func changeSliderWithVlue(value:CGFloat) {
@@ -225,32 +228,31 @@ open class SYSliderImageCodeView: UIView {
                 }else {
                     defaultSlider()
                     if (!slider.isTracking && slider.value != 1) {
-                        self.sliderView.slider.setValue(0, animated: true)
+                        self.sliderView.setValue(0, animated: true)
                         if slider.value > 0 {
-                            self.sliderView.slider.setMinimumTrackImage(minimumTrackImage, for: .normal)
+                            self.sliderView.setMinimumTrackImage(minimumTrackImage, for: .normal)
                         }else {
-                            self.sliderView.slider.setMinimumTrackImage(maximumTrackImage, for: .normal)
+                            self.sliderView.setMinimumTrackImage(maximumTrackImage, for: .normal)
                         }
-                        self.sliderView.imageView.frame = CGRect(x: self.sliderView.slider.frame.origin.x, y: self.sliderView.slider.frame.origin.y, width: sliderWH, height: sliderWH)
+                        self.sliderView.setImageViewFrame(frame: CGRect(x: self.sliderView.frame.origin.x, y: (sliderWH-self.sliderView.frame.height)/2, width: sliderWH, height: sliderWH))
                     }
                 }
             }else if phase == .moved {
                 if (slider.value>Float(self.frame.size.width-margin*2-codeSize)) {
-                    self.sliderView.slider.value = Float(self.frame.size.width-margin*2-codeSize)
+                    self.sliderView.value = Float(self.frame.size.width-margin*2-codeSize)
                     return
                 }
                 changeSliderWithVlue(value: CGFloat(slider.value))
             }
         }
         
-        self.sliderView.slider.setValue(slider.value, animated: false)
+        self.sliderView.setValue(slider.value, animated: false)
         if slider.value > 0 {
-            self.sliderView.slider.setMinimumTrackImage(minimumTrackImage, for: .normal)
+            self.sliderView.setMinimumTrackImage(minimumTrackImage, for: .normal)
         }else {
-            self.sliderView.slider.setMinimumTrackImage(maximumTrackImage, for: .normal)
+            self.sliderView.setMinimumTrackImage(maximumTrackImage, for: .normal)
         }
-
-        self.sliderView.imageView.center = CGPoint(x: self.sliderView.slider.frame.origin.x+CGFloat(slider.value)*(self.sliderView.slider.frame.width-40)+20, y: self.sliderView.slider.center.y)
+        self.sliderView.setImageViewCenter(point: CGPoint(x: self.sliderView.frame.origin.x+CGFloat(slider.value)*(self.sliderView.frame.width-40)+20, y: self.sliderView.frame.height/2))
     }
     
     lazy var mainImage: UIImageView = {
@@ -273,5 +275,4 @@ open class SYSliderImageCodeView: UIView {
         let mask = CAShapeLayer()
         return mask
     }()
-   
 }
