@@ -328,38 +328,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0496EAE1E0DEB5B7DE0B9A453F1CB128 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 798202A1ADE038C7C635135A1A7D7462 /* SYSliderCodeView.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SYSliderCodeView/SYSliderCodeView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView.modulemap";
-				PRODUCT_MODULE_NAME = SYSliderCodeView;
-				PRODUCT_NAME = SYSliderCodeView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		583F77B64D2D4EEEF28FB53CBF3E632E /* Release */ = {
+		6B7FC9220D2901B02BF7D0DC9D20A044 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 235451B4005AB090DE86FC427B83EB31 /* SYSliderCodeView.release.xcconfig */;
 			buildSettings = {
@@ -375,7 +344,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SYSliderCodeView/SYSliderCodeView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView.modulemap";
 				PRODUCT_MODULE_NAME = SYSliderCodeView;
@@ -586,6 +555,37 @@
 			};
 			name = Debug;
 		};
+		E2B0D2D0267CB88BA893D427FCCE8347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 798202A1ADE038C7C635135A1A7D7462 /* SYSliderCodeView.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SYSliderCodeView/SYSliderCodeView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SYSliderCodeView/SYSliderCodeView.modulemap";
+				PRODUCT_MODULE_NAME = SYSliderCodeView;
+				PRODUCT_NAME = SYSliderCodeView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -601,8 +601,8 @@
 		495B53F27D8991527AB7F17E0DE9DC73 /* Build configuration list for PBXNativeTarget "SYSliderCodeView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0496EAE1E0DEB5B7DE0B9A453F1CB128 /* Debug */,
-				583F77B64D2D4EEEF28FB53CBF3E632E /* Release */,
+				E2B0D2D0267CB88BA893D427FCCE8347 /* Debug */,
+				6B7FC9220D2901B02BF7D0DC9D20A044 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
