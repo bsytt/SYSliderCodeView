@@ -1,5 +1,5 @@
 PODS:
-  - SYSliderCodeView (0.0.7)
+  - SYSliderCodeView (0.0.8)
 
 DEPENDENCIES:
   - SYSliderCodeView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SYSliderCodeView: d3bfbf8a9a3655e7682bb22f2bb5b4e2bd3ddc3e
+  SYSliderCodeView: 897aac3f4610b0ddfcd5ad52af11206b65594acf
 
 PODFILE CHECKSUM: 686cbb804368117e447909be7adbef597f3c63c9
 

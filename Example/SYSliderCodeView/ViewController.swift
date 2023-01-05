@@ -46,9 +46,32 @@ class ViewController: UIViewController {
             }
         }
     }
+    let Indentation :CGFloat = 12
+    let offset : CGFloat = 10
+    let codeSize:CGSize = CGSize(width: 60, height: 57)
+    func customPath() -> UIBezierPath {
+        let starPath = UIBezierPath()
+        starPath.move(to: CGPoint(x: codeSize.width/2, y: 0))   //顶点
+        starPath.addLine(to: CGPoint(x: codeSize.width/2-Indentation, y: codeSize.height/2-Indentation))
+        starPath.addLine(to: CGPoint(x: 0, y: codeSize.width/2-Indentation+3))
+        starPath.addLine(to: CGPoint(x: codeSize.width/2-Indentation*3/2+2, y: codeSize.height/2+Indentation/2+2))
+        starPath.addLine(to: CGPoint(x: codeSize.width/2-Indentation*3/2-2, y: codeSize.height))
+        starPath.addLine(to: CGPoint(x: codeSize.width/2, y: codeSize.height/2+Indentation*3/2+2))
+        starPath.addLine(to: CGPoint(x: codeSize.width/2+Indentation*3/2+2, y: codeSize.height))
+        starPath.addLine(to: CGPoint(x: codeSize.width/2+Indentation*3/2-2, y: codeSize.height/2+Indentation/2+2))
+        starPath.addLine(to: CGPoint(x: codeSize.width, y: codeSize.width/2-Indentation+3))
+        starPath.addLine(to: CGPoint(x: codeSize.width/2+Indentation, y: codeSize.height/2-Indentation))
+        starPath.addLine(to: CGPoint(x: codeSize.width/2, y: 0))
+
+        starPath.close()
     
+        return starPath
+    }
+   
     func createImgSlider() {
-        let sliderView = SYSliderImageCodeView(frame: CGRect(x: 15, y: 200, width: kScreenWidth-30, height: 200), imageName: "img", sliderWH: 40)
+        let tool = SYSliderDrawPath.shared.createPath(type: .customType,customPath: customPath(),codeSize: codeSize)
+        let sliderView = SYSliderImageCodeView(frame: CGRect(x: 15, y: 200, width: kScreenWidth-30, height: 200), imageName: "img", sliderWH: 40,pathTool: tool)
+//        let sliderView = SYSliderImageCodeView(frame: CGRect(x: 15, y: 200, width: kScreenWidth-30, height: 200), imageName: "img", sliderWH: 40)
         sliderView.minimumTrackImage = minimumTrackImage
         sliderView.maximumTrackImage = maximumTrackImage
         sliderView.thumbImage = UIImage(named: "darrow")

@@ -7,6 +7,12 @@
 
 import UIKit
 
+public enum SliderCodeContentMode {
+    case scaleAspectFit
+    case scaleAspectFill
+    case scaleToFill
+}
+
 extension UIColor{
 
     //用数值初始化颜色，便于生成设计图上标明的十六进制颜色
